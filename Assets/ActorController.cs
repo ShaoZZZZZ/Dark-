@@ -7,6 +7,7 @@ public class ActorController : MonoBehaviour {
 	public GameObject model;
 	public PlayerInput pi;
 	public float walkSpeed = 2.0f;
+	public float runMutiplier = 2.0f;
 
 	[SerializeField]
 	private Animator anim;
@@ -24,12 +25,20 @@ public class ActorController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//print(pi.Dup);
-		anim.SetFloat("forward",pi.Dmag);
+		float targetRunMulti = ((pi.run) ? 2.0f: 1.0f);
+		//使得run和walk线性过渡
+		anim.SetFloat("forward",pi.Dmag * Mathf.Lerp( anim.GetFloat("forward"),targetRunMulti,0.5f));
+        if (pi.jump)
+        {
+			anim.SetTrigger("jump");
+        }
+
 		if(pi.Dmag > 0.1f)//修复停止动作后恢复正向的bug
         {
-			model.transform.forward = pi.Dvec;
+			Vector3 targetForward = Vector3.Slerp(model.transform.forward,pi.Dvec,0.1f);//平滑插值角色模型的旋转
+			model.transform.forward = targetForward;
         }
-		movingVec = pi.Dmag * model.transform.forward * walkSpeed;//当前位置偏移量 * 移动的方向（当下模型的正面） = 移动
+		movingVec = pi.Dmag * model.transform.forward * walkSpeed * ((pi.run)?runMutiplier:1.0f);//当前位置偏移量 * 移动的方向（当下模型的正面） = 移动  又* 是否run
 	}
 
 	void FixedUpdate()

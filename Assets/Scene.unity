@@ -231,10 +231,17 @@ MonoBehaviour:
   keyDown: s
   keyLeft: a
   keyRight: d
+  keyA: left shift
+  keyB: space
+  keyC: 
+  keyD: 
   Dup: 0
   Dright: 0
   Dmag: 0
   Dvec: {x: 0, y: 0, z: 0}
+  run: 0
+  jump: 0
+  lastJump: 0
   inputEnabled: 1
 --- !u!114 &187136349
 MonoBehaviour:
@@ -250,6 +257,7 @@ MonoBehaviour:
   model: {fileID: 570341183}
   pi: {fileID: 0}
   walkSpeed: 1.4
+  runMutiplier: 2
   anim: {fileID: 0}
 --- !u!136 &187136350
 CapsuleCollider:
@@ -273,7 +281,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.01
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
