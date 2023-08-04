@@ -53,7 +53,13 @@
   <ItemGroup>
      <Compile Include="Assets\ActorController.cs" />
      <Compile Include="Assets\FSMClearSignals.cs" />
+     <Compile Include="Assets\FSMOnEnter.cs" />
+     <Compile Include="Assets\FSMOnExit.cs" />
+     <Compile Include="Assets\FSMOnUpdate.cs" />
+     <Compile Include="Assets\OnGroundSensor.cs" />
      <Compile Include="Assets\PlayerInput.cs" />
+     <Compile Include="Assets\Tester.cs" />
+     <Compile Include="Assets\TesterFSMOnEnter.cs" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>E:/Unity2017/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
  </Reference>
